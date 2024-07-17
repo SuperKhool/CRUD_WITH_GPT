@@ -16,46 +16,75 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f0f0f0;
+            background-color: #1a1a1a; /* Dark background */
+            color: #ffffff; /* White text */
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            padding: 2rem;
         }
         .card {
             width: 30rem;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            border-radius: 15px;
             overflow: hidden;
-            background-color: #fff;
+            background-color: #292929; /* Dark gray card background */
+            color: #ffffff; /* White text for card */
         }
         .card-img-top {
             height: 200px;
             object-fit: cover;
         }
-        .card-body h5 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+        .card-body {
+            padding: 2rem;
         }
-        .card-body p {
-            font-size: 1rem;
-            color: #555;
+        .card-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #ff7e5f; /* Orange title */
+        }
+        .card-text {
+            font-size: 1.2rem;
             margin-bottom: 1rem;
         }
         .list-group-item {
-            font-size: 0.95rem;
-            padding: 0.75rem 1.25rem;
+            background-color: #383838; /* Darker gray list background */
+            border-color: #383838;
+            color: #ffffff; /* White text for list items */
+            font-size: 1rem;
+            padding: 1rem;
+        }
+        .list-group-item strong {
+            color: #ff7e5f; /* Orange text for strong tags */
         }
         .btn-group {
             display: flex;
             justify-content: space-between;
-            padding: 1rem;
+            margin-top: 1.5rem;
         }
         form {
-            width: 100%;
+            margin-top: 1rem;
         }
         .form-control {
-            margin-bottom: 1rem;
+            background-color: #4c4c4c; /* Darker form control background */
+            color: #ffffff; /* White text for form controls */
+            border: 1px solid #555555; /* Dark border */
         }
         .btn-primary, .btn-warning, .btn-danger {
             width: 48%;
+        }
+        .btn-primary {
+            background-color: #007bff; /* Blue button */
+            border-color: #007bff;
+        }
+        .btn-warning {
+            background-color: #ffc107; /* Yellow button */
+            border-color: #ffc107;
+        }
+        .btn-danger {
+            background-color: #dc3545; /* Red button */
+            border-color: #dc3545;
         }
     </style>
 
