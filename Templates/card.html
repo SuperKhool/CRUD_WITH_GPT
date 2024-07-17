@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load crispy_forms_tags %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Employee</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        .card {
+            width: 30rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-body h5 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .card-body p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        .list-group-item {
+            font-size: 0.95rem;
+            padding: 0.75rem 1.25rem;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+        }
+        form {
+            width: 100%;
+        }
+        .form-control {
+            margin-bottom: 1rem;
+        }
+        .btn-primary, .btn-warning, .btn-danger {
+            width: 48%;
+        }
+    </style>
+
+    <script>
+        function confirmDeletion(event) {
+            if (!confirm("Are you sure you want to delete this employee?")) {
+                event.preventDefault();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <img class="card-img-top" src="{{ employe.profile_image.url }}" alt="Profile Image">
+            <div class="card-body">
+                <h5 class="card-title">{{ employe.name }}</h5>
+                <p class="card-text">{{ employe.name }} is a valued employee!</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>Email:</strong> {{ employe.email }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Contact:</strong> {{ employe.phone }}
+                </li>
+            </ul>
+            <div class="card-body">
+                <form action="{% url 'edit_employe' employe.id %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="btn-group">
+                        <a href="{% url 'home'  %}" class="btn btn-primary">
+                            <i class="bi bi-arrow-left"></i> Back
+                        </a>
+                        <button type="submit" class="btn btn-warning">
+                            <i class="bi bi-save"></i> Save
+                        </button>
+                    </div>
+                </form>
+                <form action="{% url 'delete_employe' employe.id %}" method="POST" onsubmit="confirmDeletion(event)" style="margin-top: 1rem;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-trash"></i> Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
